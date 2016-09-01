@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>水蕴茶社_Book</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+
+        <div style="background: url(https://raw.githubusercontent.com/clwater/ExternalFile/master/img/blog_other_back.jpg); height: 600px; position: relative">
+                   <nav class="navbar " role="navigation" style="padding-left: 50px ;padding-right: 50px ; padding-top: 10px; position: relative ">
+                       <div class="navbar-header .navbar-right">
+                           <span class="navbar-brand" style="color: #000000 ; font-size: 2em">水蕴茶社</span>
+                       </div>
+                       <div>
+                          <ul class="nav navbar-nav navbar-right ">
+                             <li ><a href="/" style="color: #2c2c2c" >HOME</a></li>
+                             <li><a href="/Blog" style="color: #2c2c2c"  >BLOG</a></li>
+                              <li class="active" ><a href="/Book">BOOK</a></li>
+                             <li><a href="/Contact" style="color: #2c2c2c" >CONTACT</a></li>
+                          </ul>
+                       </div>
+                    </nav>
+            <div style="position: absolute;    bottom: 60px;     width: 100%;    color: #FFF;    text-align: center;">
+                <p class="h1" style="text-align:center;">Book</p>
+            </div>
+        </div>
+
+          <div class="container" style="padding-left: 15px">
+            {% load markdown_deux_tags %}
+                <div class="col-md-9"  style="padding-top: 50px">
+
+                    <div>
+
+                        <b>In there , we will share some books with my read . If about it , Looking forward to write wo me .</b>
+                    </div>
+                        {% for book in books %}
+                            <div class="" style="padding-top: 50px">
+                                <div class="" style="">
+                                    <a href="{% url 'book_get_detail' book.id  %}" style="color:#151b42;"><h3>{{ book.title }}</h3></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <span style="color: #bec0bf">{{ book.created|date:"Y-m-d  H:i" }}</span>
+                                </div>
+                                <div class="col-md-6" style="text-align: right ; ">
+                                    {% for tag in book.tags.all %}
+                                     <span class="" style="color: #c3c6c9 ; background-color: #fcfcfc; padding: 3px ; margin-left: 10px">
+                                            {{ tag.name }}
+                                    </span>
+                                     {% endfor %}
+                                </div>
+
+                            </div>
+                        {% endfor %}
+
+                    <div style="height: 60px"></div>
+
+                       {% for index in max_books %}
+                            {% if index == choose %}
+                                <a href="{% url 'blog_get_books' index %}" style="font-size: 1.2em;  color: #ffffff ;background: #005059 ; padding: 10px ; text-align: center ; margin: 3px" >{{index}}</a>
+                            {% else %}
+                                <a href="{% url 'blog_get_books' index %}" style="font-size: 1.2em;   color: #005059 ; background: #f1f1f1; padding: 10px ; text-align: center ; margin: 3px" >{{index}}</a>
+                            {% endif %}
+                       {% endfor %}
+
+
+
+                </div>
+
+                <div class="col-md-3" style="padding-top: 60px ; padding-left: 20px ;  text-align: center">
+
+                    <div class="" style="padding-left: 20px">
+                        <h2>About Me</h2>
+                        <img src="https://avatars0.githubusercontent.com/u/14257964?v=3&u=209103a5546ea69a6af113ec24e812aeb63741ab&s=140" class="img-circle"/>
+                        <br/>
+                        <br/>
+                        <span>I am <b>Clwater</b>. Welcome to my Blog , Wish </span><a href="/Home">it</a><span> will help you .</span>
+                    </div>
+
+                    <div style="height: 100px"></div>
+
+                    <div >
+                        <p>It will have some spceial things , but now , I didn`t actualize . Yes , I am not lazy .......</p>
+
+                    </div>
+                </div>
+
+  <a id="scrollUp" href="#top" style="bottom: 20px; right: 20px; width: 38px; ; height :38px ; display: block; position: fixed; z-index: 2147483647; background-image: url(https://raw.githubusercontent.com/clwater/ExternalFile/master/img/top.png); "></a>
+
+            </div>
+
+</body>
+</html>
